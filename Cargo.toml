@@ -1,0 +1,12 @@
+[package]
+name = "tobj_viewer"
+version = "0.0.1"
+authors = ["Will Usher <willusher.life@gmail.com>"]
+
+[dependencies]
+glium = "*"
+glutin = "*"
+clock_ticks = "0.0.5"
+cgmath = "0.1.5"
+tobj = "0.0.5"
+
