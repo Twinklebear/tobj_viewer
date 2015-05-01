@@ -1,7 +1,8 @@
 #![allow(dead_code)]
 
 /// support is taken from the [glium](https://github.com/tomaka/glium) examples with only slight
-/// modifications, eg. to use tobj for loading models and switching to an arcball camera
+/// modifications, eg. to use tobj for loading models and switching to an arcball camera (arcball
+/// camera is a TODO)
 
 extern crate tobj;
 extern crate clock_ticks;
