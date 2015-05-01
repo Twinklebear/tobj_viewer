@@ -11,9 +11,11 @@ The rendering quality is extremely basic, this program is mostly used to check t
 on some bigger scenes.
 
 ![Stanford Buddha](http://i.imgur.com/eUsqZd8.png)
-
 ![Rust Logo](http://i.imgur.com/uJbca2d.png)
+![Rungholt](http://i.imgur.com/uJbca2d.png)
 
 The Buddha is from the [Stanford Scanning Repository](http://graphics.stanford.edu/data/3Dscanrep/) and the Rust logo
-was modeled [Nylithius on BlenderArtists](http://blenderartists.org/forum/showthread.php?362836-Rust-language-3D-logo).
+was modeled [Nylithius on BlenderArtists](http://blenderartists.org/forum/showthread.php?362836-Rust-language-3D-logo),
+The [Rungholt](http://graphics.cs.williams.edu/data/meshes.xml) model can be found on Morgan McGuire's meshes page and
+was original built by kescha.
 
