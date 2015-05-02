@@ -12,7 +12,7 @@ on some bigger scenes.
 
 ![Stanford Buddha](http://i.imgur.com/eUsqZd8.png)
 ![Rust Logo](http://i.imgur.com/uJbca2d.png)
-![Rungholt](http://i.imgur.com/k2sC05w.png)
+![Rungholt](http://i.imgur.com/wImyNG4.png)
 
 The Buddha is from the [Stanford Scanning Repository](http://graphics.stanford.edu/data/3Dscanrep/) and the Rust logo
 was modeled [Nylithius on BlenderArtists](http://blenderartists.org/forum/showthread.php?362836-Rust-language-3D-logo).
