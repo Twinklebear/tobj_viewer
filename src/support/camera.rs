@@ -43,6 +43,14 @@ impl CameraState {
         AffineMatrix3::look_at(&self.position, &target, &Vector3::new(0.0, 1.0, 0.0)).mat.into_fixed()
     }
 
+    pub fn get_position(&self) -> [f32; 3] {
+        self.position.into_fixed()
+    }
+
+    pub fn get_direction(&self) -> [f32; 3] {
+        self.direction.into_fixed()
+    }
+
     pub fn update(&mut self) {
         if self.moving_up {
             self.position.y += 0.01;

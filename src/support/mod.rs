@@ -51,10 +51,11 @@ pub fn load_wavefront(display: &Display, path: &Path) -> (VertexBufferAny, f32) 
     struct Vertex {
         position: [f32; 3],
         normal: [f32; 3],
-        color: [f32; 3],
+        color_diffuse: [f32; 3],
+        color_specular: [f32; 4],
     }
 
-    implement_vertex!(Vertex, position, normal, color);
+    implement_vertex!(Vertex, position, normal, color_diffuse, color_specular);
 
     let mut min_pos = [f32::INFINITY; 3];
     let mut max_pos = [f32::NEG_INFINITY; 3];
@@ -74,15 +75,17 @@ pub fn load_wavefront(display: &Display, path: &Path) -> (VertexBufferAny, f32) 
                         } else {
                             [0.0, 0.0, 0.0]
                         };
-                    let color =
+                    let (color_diffuse, color_specular) =
                         match mesh.material_id {
-                            Some(i) => mats[i].diffuse,
-                            None => [1.0, 1.0, 1.0],
+                            Some(i) => (mats[i].diffuse, [mats[i].specular[0], mats[i].specular[1],
+                                        mats[i].specular[2], mats[i].shininess]),
+                            None => ([0.8, 0.8, 0.8], [0.15, 0.15, 0.15, 15.0])
                         };
                     vertex_data.push(Vertex {
                         position: pos,
                         normal: normal,
-                        color: color,
+                        color_diffuse: color_diffuse,
+                        color_specular: color_specular,
                     });
                     // Update our min/max pos so we can figure out the bounding box of the object
                     // to view it
