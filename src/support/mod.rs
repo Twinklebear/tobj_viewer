@@ -104,6 +104,6 @@ pub fn load_wavefront(display: &Display, path: &Path) -> (VertexBufferAny, f32) 
         + f32::powf(max_pos[2] - min_pos[2], 2.0);
     let scale = f32::sqrt(diagonal_len / current_len);
     println!("Model scaled by {} to fit", scale);
-    (glium::vertex::VertexBuffer::new(display, vertex_data).into_vertex_buffer_any(), scale)
+    (glium::vertex::VertexBuffer::new(display, &vertex_data).unwrap().into_vertex_buffer_any(), scale)
 }
 
