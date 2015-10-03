@@ -1,13 +1,11 @@
 #[macro_use]
 extern crate glium;
-extern crate glutin;
 extern crate cgmath;
 
 use std::path::Path;
+use std::default::Default;
 
-use cgmath::*;
-use glium::Surface;
-use glium::DisplayBuild;
+use glium::{glutin, Surface, DisplayBuild};
 
 mod support;
 
@@ -112,9 +110,12 @@ fn main() {
 
         // draw parameters
         let params = glium::DrawParameters {
-            depth_test: glium::DepthTest::IfLess,
-            depth_write: true,
-            .. std::default::Default::default()
+            depth: glium::Depth {
+                test: glium::DepthTest::IfLess,
+                write: true,
+                .. Default::default()
+            },
+            .. Default::default()
         };
 
         // drawing a frame

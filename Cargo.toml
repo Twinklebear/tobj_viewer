@@ -4,9 +4,8 @@ version = "0.0.1"
 authors = ["Will Usher <willusher.life@gmail.com>"]
 
 [dependencies]
-glium = "0.8.5"
-glutin = "0.3.4"
+glium = "0.9.1"
 clock_ticks = "0.0.6"
-cgmath = "0.2.0"
+cgmath = "0.3.1"
 tobj = "0.0.9"
 

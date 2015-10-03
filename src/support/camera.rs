@@ -1,5 +1,5 @@
-use glutin;
 use cgmath::*;
+use glium::glutin;
 
 pub struct CameraState {
     aspect_ratio: f32,
