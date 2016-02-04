@@ -2,10 +2,10 @@
 name = "tobj_viewer"
 version = "0.0.1"
 dependencies = [
- "cgmath 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "clock_ticks 0.0.6 (registry+https://github.com/rust-lang/crates.io-index)",
+ "cgmath 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "clock_ticks 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "glium 0.9.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "tobj 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "tobj 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -85,7 +85,7 @@ dependencies = [
 
 [[package]]
 name = "cgmath"
-version = "0.3.1"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "num 0.1.27 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -95,7 +95,7 @@ dependencies = [
 
 [[package]]
 name = "clock_ticks"
-version = "0.0.6"
+version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "libc 0.1.10 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -486,7 +486,7 @@ dependencies = [
 
 [[package]]
 name = "tobj"
-version = "0.1.0"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]

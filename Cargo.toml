@@ -5,7 +5,7 @@ authors = ["Will Usher <willusher.life@gmail.com>"]
 
 [dependencies]
 glium = "0.9.1"
-clock_ticks = "0.0.6"
-cgmath = "0.3.1"
-tobj = "0.1.0"
+clock_ticks = "0.1.0"
+cgmath = "0.7.0"
+tobj = "0.1.1"
 

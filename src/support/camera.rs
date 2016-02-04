@@ -33,22 +33,22 @@ impl CameraState {
     }
 
     pub fn get_perspective(&self) -> [[f32; 4]; 4] {
-        self.perspective.into_fixed()
+        self.perspective.into()
     }
 
     pub fn get_view(&self) -> [[f32; 4]; 4] {
         // Why does this crap ass cgmath library not have any addition operator for Points??? WTF?
         let target = Point3::new(self.position.x + self.direction.x, self.position.y + self.direction.y,
                                  self.position.z + self.direction.z);
-        AffineMatrix3::look_at(&self.position, &target, &Vector3::new(0.0, 1.0, 0.0)).mat.into_fixed()
+        AffineMatrix3::look_at(self.position, target, Vector3::new(0.0, 1.0, 0.0)).mat.into()
     }
 
     pub fn get_position(&self) -> [f32; 3] {
-        self.position.into_fixed()
+        self.position.into()
     }
 
     pub fn get_direction(&self) -> [f32; 3] {
-        self.direction.into_fixed()
+        self.direction.into()
     }
 
     pub fn update(&mut self) {
