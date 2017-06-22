@@ -22,7 +22,7 @@ impl CameraState {
             aspect_ratio: aspect,
             position: Point3::new(0.1, 0.1, 1.0),
             direction: Point3::new(0.0, 0.0, -1.0),
-            perspective: perspective(deg(60.0), aspect, 0.1, 100.0),
+            perspective: perspective(Deg(60.0), aspect, 0.1, 100.0),
             moving_up: false,
             moving_left: false,
             moving_down: false,
@@ -40,7 +40,7 @@ impl CameraState {
         // Why does this crap ass cgmath library not have any addition operator for Points??? WTF?
         let target = Point3::new(self.position.x + self.direction.x, self.position.y + self.direction.y,
                                  self.position.z + self.direction.z);
-        AffineMatrix3::look_at(self.position, target, Vector3::new(0.0, 1.0, 0.0)).mat.into()
+        Matrix4::look_at(self.position, target, Vector3::new(0.0, 1.0, 0.0)).into()
     }
 
     pub fn get_position(&self) -> [f32; 3] {

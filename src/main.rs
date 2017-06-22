@@ -214,7 +214,7 @@ fn main() {
                 glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::Escape)) => {
                     return support::Action::Stop;
                 },
-                glutin::Event::MouseMoved((x, y)) => {
+                glutin::Event::MouseMoved(x, y) => {
                     mouse_pos = (x as f32, y as f32);
                 },
                 glutin::Event::MouseInput(state, glutin::MouseButton::Left) => {
