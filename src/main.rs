@@ -9,80 +9,6 @@ use glium::{glutin, Surface, DisplayBuild};
 
 mod support;
 
-struct State {
-    show_app_metrics: bool,
-    show_app_main_menu_bar: bool,
-    show_app_console: bool,
-    show_app_layout: bool,
-    show_app_long_text: bool,
-    show_app_auto_resize: bool,
-    show_app_fixed_overlay: bool,
-    show_app_custom_rendering: bool,
-    show_app_manipulating_window_title: bool,
-    show_app_about: bool,
-    no_titlebar: bool,
-    no_border: bool,
-    no_resize: bool,
-    no_move: bool,
-    no_scrollbar: bool,
-    no_collapse: bool,
-    no_menu: bool,
-    bg_alpha: f32,
-    auto_resize_state: AutoResizeState,
-    file_menu: FileMenuState
-}
-
-impl Default for State {
-    fn default() -> Self {
-        State {
-            show_app_metrics: false,
-            show_app_main_menu_bar: false,
-            show_app_console: false,
-            show_app_layout: false,
-            show_app_long_text: false,
-            show_app_auto_resize: false,
-            show_app_fixed_overlay: false,
-            show_app_custom_rendering: false,
-            show_app_manipulating_window_title: false,
-            show_app_about: false,
-            no_titlebar: false,
-            no_border: true,
-            no_resize: false,
-            no_move: false,
-            no_scrollbar: false,
-            no_collapse: false,
-            no_menu: false,
-            bg_alpha: 0.65,
-            auto_resize_state: Default::default(),
-            file_menu: Default::default()
-        }
-    }
-}
-
-struct FileMenuState {
-    enabled: bool
-}
-
-impl Default for FileMenuState {
-    fn default() -> Self {
-        FileMenuState {
-            enabled: true
-        }
-    }
-}
-
-struct AutoResizeState {
-    lines: i32
-}
-
-impl Default for AutoResizeState {
-    fn default() -> Self {
-        AutoResizeState {
-            lines: 10
-        }
-    }
-}
-
 // This code is essentially straight from the glium teapot example
 fn main() {
     let model_file = match std::env::args().nth(1) {
@@ -101,7 +27,7 @@ fn main() {
         .unwrap();
 
     // building the vertex and index buffers
-    let (mut vertex_buffer, mut scale) = support::load_wavefront(&display, &Path::new(&model_file));
+    let (mut vertex_buffer, mut scale) = support::load_wavefront(&display, Path::new(&model_file));
 
     // the program
     let program = program!(&display,
@@ -168,8 +94,6 @@ fn main() {
     ).unwrap();
 
     let mut camera = support::camera::CameraState::new();
-    let mut state = State::default();
-    let mut opened = true;
     let mut mouse_pressed = [false; 3];
     let mut mouse_pos = (0.0, 0.0);
 
@@ -197,7 +121,6 @@ fn main() {
         };
 
         let mut target = display.draw();
-        let (width, height) = target.get_dimensions();
 
         // drawing a frame
         target.clear_color_and_depth((0.0, 0.0, 0.0, 0.0), 1.0);
@@ -214,7 +137,7 @@ fn main() {
                 glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::Escape)) => {
                     return support::Action::Stop;
                 },
-                glutin::Event::MouseMoved((x, y)) => {
+                glutin::Event::MouseMoved(x, y) => {
                     mouse_pos = (x as f32, y as f32);
                 },
                 glutin::Event::MouseInput(state, glutin::MouseButton::Left) => {

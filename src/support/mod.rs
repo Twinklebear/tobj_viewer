@@ -10,6 +10,7 @@ extern crate glium;
 
 use std::path::Path;
 use std::thread;
+use std::time::Duration;
 use std::f32;
 
 use glium::Display;
@@ -41,7 +42,7 @@ pub fn start_loop<F>(mut callback: F) where F: FnMut() -> Action {
             accumulator -= FIXED_TIME_STAMP;
         }
 
-        thread::sleep_ms(((FIXED_TIME_STAMP - accumulator) / 1000000) as u32);
+        thread::sleep(Duration::from_millis((FIXED_TIME_STAMP - accumulator) / 1000000));
     }
 }
 

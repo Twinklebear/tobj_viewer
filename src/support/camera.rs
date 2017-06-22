@@ -22,7 +22,7 @@ impl CameraState {
             aspect_ratio: aspect,
             position: Point3::new(0.1, 0.1, 1.0),
             direction: Point3::new(0.0, 0.0, -1.0),
-            perspective: perspective(deg(60.0), aspect, 0.1, 100.0),
+            perspective: perspective(Deg(60.0), aspect, 0.1, 100.0),
             moving_up: false,
             moving_left: false,
             moving_down: false,
@@ -40,7 +40,7 @@ impl CameraState {
         // Why does this crap ass cgmath library not have any addition operator for Points??? WTF?
         let target = Point3::new(self.position.x + self.direction.x, self.position.y + self.direction.y,
                                  self.position.z + self.direction.z);
-        AffineMatrix3::look_at(self.position, target, Vector3::new(0.0, 1.0, 0.0)).mat.into()
+        Matrix4::look_at(self.position, target, Vector3::new(0.0, 1.0, 0.0)).into()
     }
 
     pub fn get_position(&self) -> [f32; 3] {
@@ -82,41 +82,41 @@ impl CameraState {
     }
 
     pub fn process_input(&mut self, event: &glutin::Event) {
-        match event {
-            &glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::Space)) => {
+        match *event {
+            glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::Space)) => {
                 self.moving_up = true;
             },
-            &glutin::Event::KeyboardInput(glutin::ElementState::Released, _, Some(glutin::VirtualKeyCode::Space)) => {
+            glutin::Event::KeyboardInput(glutin::ElementState::Released, _, Some(glutin::VirtualKeyCode::Space)) => {
                 self.moving_up = false;
             },
-            &glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::Down)) => {
+            glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::Down)) => {
                 self.moving_down = true;
             },
-            &glutin::Event::KeyboardInput(glutin::ElementState::Released, _, Some(glutin::VirtualKeyCode::Down)) => {
+            glutin::Event::KeyboardInput(glutin::ElementState::Released, _, Some(glutin::VirtualKeyCode::Down)) => {
                 self.moving_down = false;
             },
-            &glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::A)) => {
+            glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::A)) => {
                 self.moving_left = true;
             },
-            &glutin::Event::KeyboardInput(glutin::ElementState::Released, _, Some(glutin::VirtualKeyCode::A)) => {
+            glutin::Event::KeyboardInput(glutin::ElementState::Released, _, Some(glutin::VirtualKeyCode::A)) => {
                 self.moving_left = false;
             },
-            &glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::D)) => {
+            glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::D)) => {
                 self.moving_right = true;
             },
-            &glutin::Event::KeyboardInput(glutin::ElementState::Released, _, Some(glutin::VirtualKeyCode::D)) => {
+            glutin::Event::KeyboardInput(glutin::ElementState::Released, _, Some(glutin::VirtualKeyCode::D)) => {
                 self.moving_right = false;
             },
-            &glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::W)) => {
+            glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::W)) => {
                 self.moving_forward = true;
             },
-            &glutin::Event::KeyboardInput(glutin::ElementState::Released, _, Some(glutin::VirtualKeyCode::W)) => {
+            glutin::Event::KeyboardInput(glutin::ElementState::Released, _, Some(glutin::VirtualKeyCode::W)) => {
                 self.moving_forward = false;
             },
-            &glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::S)) => {
+            glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::S)) => {
                 self.moving_backward = true;
             },
-            &glutin::Event::KeyboardInput(glutin::ElementState::Released, _, Some(glutin::VirtualKeyCode::S)) => {
+            glutin::Event::KeyboardInput(glutin::ElementState::Released, _, Some(glutin::VirtualKeyCode::S)) => {
                 self.moving_backward = false;
             },
             _ => {}
