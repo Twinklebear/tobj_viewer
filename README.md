@@ -5,6 +5,9 @@ A simple Wavefront OBJ viewer that uses [tobj](https://github.com/Twinklebear/to
 the glium teapot demo but will also re-scale models to fit within a unit cube so it's easier to view a wide
 variety of models at potentially very different scales.
 
+First use:
+cargo run teapot.obj
+
 Samples
 ---
 The rendering quality is extremely basic, this program is mostly used to check that tobj is loading things properly
