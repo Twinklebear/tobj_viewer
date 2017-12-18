@@ -3,10 +3,12 @@ tobj viewer
 A simple Wavefront OBJ viewer that uses [tobj](https://github.com/Twinklebear/tobj) to load models and
 [glium](https://github.com/tomaka/glium) to render them. The rendering code is essentially straight out of
 the glium teapot demo but will also re-scale models to fit within a unit cube so it's easier to view a wide
-variety of models at potentially very different scales.
+variety of models at potentially very different scales. To run pass the OBJ file to the viewer, e.g. through
+Cargo you can run the provided Utah teapot example:
 
-First use:
-cargo run teapot.obj
+```bash
+cargo run -- teapot.obj
+```
 
 Samples
 ---
