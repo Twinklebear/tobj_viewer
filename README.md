@@ -10,6 +10,8 @@ Cargo you can run the provided Utah teapot example:
 cargo run -- teapot.obj
 ```
 
+You can then use WASD to move forward/backward/sideways and the up/down arrows to move vertically.
+
 Samples
 ---
 The rendering quality is extremely basic, this program is mostly used to check that tobj is loading things properly
