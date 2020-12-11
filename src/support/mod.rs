@@ -3,12 +3,12 @@
 extern crate clock_ticks;
 extern crate tobj;
 
-use std::thread;
-use std::path::Path;
-use std::time::{Duration, Instant};
-use glium::{self, Display};
 use glium::vertex::VertexBufferAny;
+use glium::{self, Display};
 use std::f32;
+use std::path::Path;
+use std::thread;
+use std::time::{Duration, Instant};
 
 pub mod camera;
 

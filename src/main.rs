@@ -2,8 +2,8 @@ extern crate cgmath;
 #[macro_use]
 extern crate glium;
 
-use std::path::Path;
 use std::default::Default;
+use std::path::Path;
 
 use glium::{glutin, Surface};
 
@@ -129,12 +129,12 @@ fn main() {
                 }
             ",
         },
-    ).unwrap();
+    )
+    .unwrap();
 
     let mut camera = support::camera::CameraState::new();
     let mut mouse_pressed = [false; 3];
     let mut mouse_pos = (0.0, 0.0);
-
 
     // the main loop
     support::start_loop(|| {
@@ -185,74 +185,74 @@ fn main() {
     });
 
     /*
-    // the main loop
-    support::start_loop(|| {
-        camera.update();
+        // the main loop
+        support::start_loop(|| {
+            camera.update();
 
-        // building the uniforms
-        let uniforms = uniform! {
-            persp_matrix: camera.get_perspective(),
-            view_matrix: camera.get_view(),
-            scaling: scale,
-            eye_pos: camera.get_position(),
-            light_dir: camera.get_direction(),
-        };
+            // building the uniforms
+            let uniforms = uniform! {
+                persp_matrix: camera.get_perspective(),
+                view_matrix: camera.get_view(),
+                scaling: scale,
+                eye_pos: camera.get_position(),
+                light_dir: camera.get_direction(),
+            };
 
-        // draw parameters
-        let params = glium::DrawParameters {
-            depth: glium::Depth {
-                test: glium::DepthTest::IfLess,
-                write: true,
+            // draw parameters
+            let params = glium::DrawParameters {
+                depth: glium::Depth {
+                    test: glium::DepthTest::IfLess,
+                    write: true,
+                    .. Default::default()
+                },
                 .. Default::default()
-            },
-            .. Default::default()
-        };
+            };
 
-        let mut target = display.draw();
+            let mut target = display.draw();
 
-        // drawing a frame
-        target.clear_color_and_depth((0.0, 0.0, 0.0, 0.0), 1.0);
-        target.draw(&vertex_buffer,
-                    &glium::index::NoIndices(glium::index::PrimitiveType::TrianglesList),
-                    &program, &uniforms, &params).unwrap();
+            // drawing a frame
+            target.clear_color_and_depth((0.0, 0.0, 0.0, 0.0), 1.0);
+            target.draw(&vertex_buffer,
+                        &glium::index::NoIndices(glium::index::PrimitiveType::TrianglesList),
+                        &program, &uniforms, &params).unwrap();
 
-        target.finish().unwrap();
+            target.finish().unwrap();
 
-        // polling and handling the events received by the window
-        for event in display.poll_events() {
-            match event {
-                glutin::Event::Closed => return support::Action::Stop,
-                glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::Escape)) => {
-                    return support::Action::Stop;
-                },
-                glutin::Event::MouseMoved(x, y) => {
-                    mouse_pos = (x as f32, y as f32);
-                },
-                glutin::Event::MouseInput(state, glutin::MouseButton::Left) => {
-                    mouse_pressed[0] = state == glutin::ElementState::Pressed;
-                },
-                glutin::Event::MouseInput(state, glutin::MouseButton::Right) => {
-                    mouse_pressed[1] = state == glutin::ElementState::Pressed;
-                },
-                glutin::Event::MouseInput(state, glutin::MouseButton::Middle) => {
-                    mouse_pressed[2] = state == glutin::ElementState::Pressed;
-                },
-                glutin::Event::DroppedFile(path) => {
-                    println!("Dropped file {}", path.display());
-                    match path.extension() {
-                        Some(ext) if ext == "obj" => {
-                            let load = support::load_wavefront(&display, path.as_path());
-                            vertex_buffer = load.0;
-                            scale = load.1;
-                        },
-                        _ => println!("Invalid file"),
-                    }
-                },
-                ev => camera.process_input(&ev),
+            // polling and handling the events received by the window
+            for event in display.poll_events() {
+                match event {
+                    glutin::Event::Closed => return support::Action::Stop,
+                    glutin::Event::KeyboardInput(glutin::ElementState::Pressed, _, Some(glutin::VirtualKeyCode::Escape)) => {
+                        return support::Action::Stop;
+                    },
+                    glutin::Event::MouseMoved(x, y) => {
+                        mouse_pos = (x as f32, y as f32);
+                    },
+                    glutin::Event::MouseInput(state, glutin::MouseButton::Left) => {
+                        mouse_pressed[0] = state == glutin::ElementState::Pressed;
+                    },
+                    glutin::Event::MouseInput(state, glutin::MouseButton::Right) => {
+                        mouse_pressed[1] = state == glutin::ElementState::Pressed;
+                    },
+                    glutin::Event::MouseInput(state, glutin::MouseButton::Middle) => {
+                        mouse_pressed[2] = state == glutin::ElementState::Pressed;
+                    },
+                    glutin::Event::DroppedFile(path) => {
+                        println!("Dropped file {}", path.display());
+                        match path.extension() {
+                            Some(ext) if ext == "obj" => {
+                                let load = support::load_wavefront(&display, path.as_path());
+                                vertex_buffer = load.0;
+                                scale = load.1;
+                            },
+                            _ => println!("Invalid file"),
+                        }
+                    },
+                    ev => camera.process_input(&ev),
+                }
             }
-        }
 
-        support::Action::Continue
-    });
-*/
+            support::Action::Continue
+        });
+    */
 }
