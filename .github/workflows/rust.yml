@@ -12,16 +12,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build
         run: cargo build --verbose
+      - name: Cargo Format
+        run: cargo fmt -- --check
     build_windows:
       runs-on: windows-latest
       steps:
       - uses: actions/checkout@v2
       - name: Build
         run: cargo build --verbose
-    check_format:
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v2
-      - name: Build
-        run: cargo fmt -- --check
-
